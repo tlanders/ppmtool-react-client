@@ -12,7 +12,8 @@ class AddProject extends Component {
             projectIdentifier:"",
             description:"",
             start_date:"",
-            end_date:""
+            end_date:"",
+            errors:{}
         };
 
         this.onChange = this.onChange.bind(this);
@@ -21,6 +22,12 @@ class AddProject extends Component {
 
     onChange(e) {
         this.setState({[e.target.name] : e.target.value})
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({errors:nextProps.errors});
+        }
     }
 
     onSubmit(e) {
@@ -92,7 +99,12 @@ class AddProject extends Component {
 }
 
 AddProject.propTypes = {
-    createProject : PropTypes.func.isRequired
+    createProject : PropTypes.func.isRequired,
+    errors : PropTypes.object.isRequired
 };
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
 
 export default connect(null, {createProject}) (AddProject);
