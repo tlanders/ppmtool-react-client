@@ -12,8 +12,8 @@ class AddProject extends Component {
             projectName:"",
             projectIdentifier:"",
             description:"",
-            start_date:"",
-            end_date:"",
+            startDate:"",
+            endDate:"",
             errors:{}
         };
 
@@ -37,8 +37,8 @@ class AddProject extends Component {
             projectName: this.state.projectName,
             projectIdentifier: this.state.projectIdentifier,
             description: this.state.description,
-            start_date: this.state.start_date,
-            end_date: this.state.end_date
+            startDate: this.state.startDate,
+            endDate: this.state.endDate
         };
 
         this.props.createProject(newProject, this.props.history);
@@ -90,27 +90,27 @@ class AddProject extends Component {
                                         )}
                                     </div>
                                     <h6>Start Date</h6>
-                                    <p>{errors.start_date}</p>
+                                    <p>{errors.startDate}</p>
                                     <div className="form-group">
                                         <input type="date"
-                                               className={classnames("form-control form-control-lg", {"is-invalid": errors.start_date})}
-                                               name="start_date"
-                                               value={this.state.start_date}
+                                               className={classnames("form-control form-control-lg", {"is-invalid": errors.startDate})}
+                                               name="startDate"
+                                               value={this.state.startDate}
                                                onChange={this.onChange}/>
-                                        {errors.start_date && (
-                                            <div className="invalid-feedback">{errors.start_date}</div>
+                                        {errors.startDate && (
+                                            <div className="invalid-feedback">{errors.startDate}</div>
                                         )}
                                     </div>
                                     <h6>Estimated End Date</h6>
-                                    <p>{errors.end_date}</p>
+                                    <p>{errors.endDate}</p>
                                     <div className="form-group">
                                         <input type="date"
-                                               className={classnames("form-control form-control-lg", {"is-invalid": errors.end_date})}
-                                               name="end_date"
-                                               value={this.state.end_date}
+                                               className={classnames("form-control form-control-lg", {"is-invalid": errors.endDate})}
+                                               name="endDate"
+                                               value={this.state.endDate}
                                                onChange={this.onChange}/>
-                                        {errors.end_date && (
-                                            <div className="invalid-feedback">{errors.end_date}</div>
+                                        {errors.endDate && (
+                                            <div className="invalid-feedback">{errors.endDate}</div>
                                         )}
                                     </div>
 
