@@ -1,16 +1,23 @@
 import React from 'react';
+import {getBacklog} from "../../../actions/projectActions";
+import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 
 class ProjectBoard extends React.Component {
+    componentDidMount() {
+        this.props.getBacklog(this.props.match.params.id);
+    }
+
     render() {
+        const projectTasks = this.props.backlog.projectTasks;
+        console.log('num tasks: ' + projectTasks.length);
         return (
             <div className="container">
-                <a href='' className="btn btn-primary mb-3">
+                <Link to={`/addProjectTask/${this.props.match.params.id}`} className="btn btn-primary mb-3">
                     <i className="fas fa-plus-circle"> Create Project Task</i>
-                </a>
+                </Link>
                 <br/>
                 <hr/>
-                {// <!-- Backlog STARTS HERE -->}
-                }
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
@@ -71,12 +78,13 @@ class ProjectBoard extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                {//}<!-- Backlog ENDS HERE -->
-                }
             </div>
         )
     }
 }
 
-export default ProjectBoard;
+const mapStateToProps = state => ({
+    backlog: state.backlog
+});
+
+export default connect(mapStateToProps, {getBacklog})(ProjectBoard);

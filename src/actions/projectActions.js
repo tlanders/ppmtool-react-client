@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT} from "./types";
+import {GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT, GET_BACKLOG} from "./types";
 
 export const createProject = (project, history) => async dispatch => {
     try {
@@ -50,4 +50,12 @@ export const deleteProject = (identifier, history) => async dispatch => {
             payload: identifier
         });
     }
+}
+
+export const getBacklog = (identifier) => async dispatch => {
+    const res = await axios.get(`/api/backlog/${identifier}`);
+    dispatch({
+        type: GET_BACKLOG,
+        payload: res.data
+    });
 }
