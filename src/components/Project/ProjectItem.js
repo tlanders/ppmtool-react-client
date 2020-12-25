@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {deleteProject} from "../../actions/projectActions";
 import {connect} from 'react-redux';
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class ProjectItem extends Component {
-    constructor(props) {
-        super(props);
-        // this.onDeleteClick = this.onDeleteClick.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // this.onDeleteClick = this.onDeleteClick.bind(this);
+    // }
 
     onDeleteClick(id) {
         this.props.deleteProject(id, this.props.history);
