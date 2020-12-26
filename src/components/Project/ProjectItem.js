@@ -5,13 +5,8 @@ import {deleteProject} from "../../actions/projectActions";
 import {connect} from 'react-redux';
 
 class ProjectItem extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     // this.onDeleteClick = this.onDeleteClick.bind(this);
-    // }
-
     onDeleteClick(id) {
-        this.props.deleteProject(id, this.props.history);
+        this.props.deleteProject(id);
     }
 
     render() {
@@ -40,11 +35,11 @@ class ProjectItem extends Component {
                                     <i className="fa fa-edit pr-1"> Update Project Info</i>
                                 </li>
                             </Link>
-                            <Link onClick={this.onDeleteClick.bind(this, project.projectIdentifier)}>
+                            <button onClick={this.onDeleteClick.bind(this, project.projectIdentifier)}>
                                 <li className="list-group-item delete">
                                     <i className="fa fa-minus-circle pr-1"> Delete Project</i>
                                 </li>
-                            </Link>
+                            </button>
                         </ul>
                     </div>
                 </div>
