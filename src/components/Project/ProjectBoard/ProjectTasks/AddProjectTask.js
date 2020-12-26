@@ -125,7 +125,11 @@ class AddProjectTask extends React.Component {
                                     )}
                                 </div>
 
-                                <input type="submit" className="btn btn-primary btn-block mt-4"/>
+                                <div className={'container'}>
+                                    <input type="submit" className="btn btn-primary btn-block mt-4"/>
+                                    <button onClick={() => {this.props.history.go(-1)}} className="btn btn-secondary btn-block mt-4">Cancel</button>
+                                </div>
+
                             </form>
                         </div>
                     </div>
