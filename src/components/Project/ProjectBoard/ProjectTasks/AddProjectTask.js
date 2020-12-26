@@ -21,6 +21,12 @@ class AddProjectTask extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(nextProps.errors) {
+            this.setState({errors: nextProps.errors});
+        }
+    }
+
     onSubmit(event) {
         event.preventDefault();
         const newTask = {
@@ -44,6 +50,7 @@ class AddProjectTask extends React.Component {
 
     render() {
         const identifier = this.props.match.params.id;
+        const {errors} = this.state;
 
         return (
             <div className="add-PBI">
@@ -58,18 +65,24 @@ class AddProjectTask extends React.Component {
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input type="text"
-                                           className="form-control form-control-lg"
+                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.summary})}
                                            onChange={this.onChange}
                                            name="summary"
                                            value={this.state.summary}
                                            placeholder="Project Task summary"/>
+                                    {errors.summary && (
+                                        <div class={"invalid-feedback"}>{errors.summary}</div>
+                                    )}
                                 </div>
                                 <div className="form-group">
-                                    <textarea className="form-control form-control-lg"
-                                              placeholder="Acceptance Criteria"
+                                    <textarea placeholder="Acceptance Criteria"
+                                              className={classnames("form-control form-control-lg",{"is-invalid":errors.acceptanceCriteria})}
                                               onChange={this.onChange}
                                               name="acceptanceCriteria"
                                               value={this.state.acceptanceCriteria}></textarea>
+                                    {errors.acceptanceCriteria && (
+                                        <div class={"invalid-feedback"}>{errors.acceptanceCriteria}</div>
+                                    )}
                                 </div>
                                 <h6>Due Date</h6>
                                 <div className="form-group">
@@ -78,9 +91,12 @@ class AddProjectTask extends React.Component {
                                            onChange={this.onChange}
                                            name="dueDate"
                                            value={this.state.dueDate}/>
+                                    {errors.dueDate && (
+                                        <div class={"invalid-feedback"}>{errors.dueDate}</div>
+                                    )}
                                 </div>
                                 <div className="form-group">
-                                    <select className="form-control form-control-lg"
+                                    <select className={classnames("form-control form-control-lg",{"is-invalid":errors.priority})}
                                             onChange={this.onChange}
                                             name="priority"
                                             value={this.state.priority}>
@@ -89,10 +105,13 @@ class AddProjectTask extends React.Component {
                                         <option value={2}>Medium</option>
                                         <option value={3}>Low</option>
                                     </select>
+                                    {errors.priority && (
+                                        <div class={"invalid-feedback"}>{errors.priority}</div>
+                                    )}
                                 </div>
 
                                 <div className="form-group">
-                                    <select className="form-control form-control-lg"
+                                    <select className={classnames("form-control form-control-lg",{"is-invalid":errors.status})}
                                             onChange={this.onChange}
                                             name="status"
                                             value={this.state.status}>
@@ -101,6 +120,9 @@ class AddProjectTask extends React.Component {
                                         <option value="IN_PROGRESS">IN PROGRESS</option>
                                         <option value="DONE">DONE</option>
                                     </select>
+                                    {errors.status && (
+                                        <div class={"invalid-feedback"}>{errors.status}</div>
+                                    )}
                                 </div>
 
                                 <input type="submit" className="btn btn-primary btn-block mt-4"/>

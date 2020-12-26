@@ -13,6 +13,11 @@ export const addProjectTask = (backlogId, projectTask, history) => async dispatc
     try {
         await axios.post(`/api/backlog/${backlogId}`, projectTask);
         history.push(`/projectBoard/${backlogId}`);
+
+        dispatch({
+            type : GET_ERRORS,
+            payload : {}
+        });
     } catch(err) {
         dispatch({
             type : GET_ERRORS,
