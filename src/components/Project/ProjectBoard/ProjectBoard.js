@@ -1,9 +1,9 @@
 import React from 'react';
-import {getBacklog} from "../../../actions/projectActions";
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import ProjectTask from "./ProjectTasks/ProjectTask";
+import {getBacklog} from "../../../actions/backlogActions";
 
 class ProjectBoard extends React.Component {
     componentDidMount() {
