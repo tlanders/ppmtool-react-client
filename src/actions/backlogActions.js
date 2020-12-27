@@ -8,6 +8,10 @@ export const getBacklog = (identifier) => async dispatch => {
             type: GET_BACKLOG,
             payload: res.data
         });
+        dispatch({
+            type: GET_ERRORS,
+            payload: {}
+        });
     } catch(err) {
         dispatch({
             type : GET_ERRORS,

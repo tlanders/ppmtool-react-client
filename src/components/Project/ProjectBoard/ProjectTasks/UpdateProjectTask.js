@@ -28,7 +28,6 @@ class UpdateProjectTask extends Component {
             sequence
         } = this.props.match.params;
 
-        console.log('mounting - id: ' + identifier + ", seq: " + sequence);
         this.props.getProjectTask(identifier, sequence, this.props.history);
     }
 
@@ -50,8 +49,8 @@ class UpdateProjectTask extends Component {
 
         this.setState({
             summary,
-            acceptanceCriteria,
-            dueDate,
+            acceptanceCriteria: (acceptanceCriteria !== null ? acceptanceCriteria : ''),
+            dueDate: (dueDate !== null ? dueDate : ''),
             priority,
             status,
             projectIdentifier,
@@ -67,7 +66,6 @@ class UpdateProjectTask extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        console.log('submit clicked');
 
         const {
             summary,
