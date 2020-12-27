@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getProjectTask} from "../../../../actions/backlogActions";
+import {getProjectTask, updateProjectTask} from "../../../../actions/backlogActions";
 
 class UpdateProjectTask extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class UpdateProjectTask extends Component {
         this.state = {
             summary: '',
             acceptanceCriteria: '',
-            dueDate: "",
+            dueDate: '',
             priority: 0,
             status: '',
             projectIdentifier: this.props.match.params.identifier,
@@ -68,6 +68,29 @@ class UpdateProjectTask extends Component {
     onSubmit(event) {
         event.preventDefault();
         console.log('submit clicked');
+
+        const {
+            summary,
+            acceptanceCriteria,
+            dueDate,
+            priority,
+            status,
+            projectIdentifier,
+            projectSequence,
+        } = this.state;
+
+        this.props.updateProjectTask(
+            projectIdentifier,
+            {
+                summary,
+                acceptanceCriteria,
+                dueDate,
+                priority,
+                status,
+                projectIdentifier,
+                projectSequence,
+            },
+            this.props.history);
     }
 
     render() {
@@ -84,7 +107,9 @@ class UpdateProjectTask extends Component {
                                 Back to Project Board
                             </Link>
                             <h4 className="display-4 text-center">View / Update Project Task</h4>
-                            <p className="lead text-center">Project Name - {sequence}</p>
+                            <p className="lead text-center">Project: {identifier}<br/>
+                                Task: {sequence}
+                            </p>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input type="text"
@@ -171,6 +196,7 @@ UpdateProjectTask.propTypes = {
     projectTask: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     getProjectTask: PropTypes.func.isRequired,
+    updateProjectTask: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -178,4 +204,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, {getProjectTask})(UpdateProjectTask);
+export default connect(mapStateToProps, {getProjectTask, updateProjectTask})(UpdateProjectTask);
