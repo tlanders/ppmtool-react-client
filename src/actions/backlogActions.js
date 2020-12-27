@@ -66,7 +66,7 @@ export const updateProjectTask = (backlogId, projectTask, history) => async disp
 }
 
 export const deleteProjectTask = (backlogId, projectTaskSequence) => async dispatch => {
-    if(window.confirm("Are you sure you want to delete the project task?")) {
+    if(window.confirm(`Are you sure you want to delete the project task ${projectTaskSequence}?`)) {
         await axios.delete(`/api/backlog/${backlogId}/${projectTaskSequence}`);
         dispatch({
             type: DELETE_PROJECT_TASK,

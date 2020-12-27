@@ -61,7 +61,7 @@ class AddProjectTask extends React.Component {
                                 Back to Project Board
                             </Link>
                             <h4 className="display-4 text-center">Add Project Task</h4>
-                            <p className="lead text-center">Project Name - {identifier}</p>
+                            <p className="lead text-center">Project: {identifier}</p>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input type="text"
