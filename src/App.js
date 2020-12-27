@@ -11,6 +11,7 @@ import ProjectBoard from "./components/Project/ProjectBoard/ProjectBoard";
 import {Provider} from "react-redux";
 import store from "./store";
 import AddProjectTask from "./components/Project/ProjectBoard/ProjectTasks/AddProjectTask";
+import UpdateProjectTask from "./components/Project/ProjectBoard/ProjectTasks/UpdateProjectTask";
 
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                         <Route path="/updateProject/:id" component={UpdateProject}/>
                         <Route path="/projectBoard/:id" component={ProjectBoard}/>
                         <Route path="/addProjectTask/:id" component={AddProjectTask}/>
+                        <Route path="/updateProjectTask/:identifier/:sequence" component={UpdateProjectTask}/>
                     </div>
                 </Router>
             </Provider>

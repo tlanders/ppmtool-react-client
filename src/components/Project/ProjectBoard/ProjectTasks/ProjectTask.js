@@ -43,7 +43,9 @@ class ProjectTask extends React.Component {
                     <p className="card-text text-truncate ">
                         {projectTask.acceptanceCriteria}
                     </p>
-                    <Link to={`/updateProjectTask/${projectTask.projectSequence}`} className="btn btn-primary">
+                    <Link to={`/updateProjectTask/${projectTask.projectIdentifier}/${projectTask.projectSequence}`}
+                          className="btn btn-primary"
+                    >
                         View / Update
                     </Link>
 

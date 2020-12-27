@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {getBacklog} from "../../../actions/backlogActions";
 import Backlog from "./Backlog";
-import ProjectTask from "./ProjectTasks/ProjectTask";
 
 class ProjectBoard extends React.Component {
     constructor(props) {
