@@ -11,10 +11,17 @@ class Register extends Component {
             fullName: "",
             username: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(nextProps.errors) {
+            this.setState({errors: nextProps.errors});
+        }
     }
 
     onChange(event) {
@@ -106,7 +113,8 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-    registerUser: PropTypes.func.isRequired
+    registerUser: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
