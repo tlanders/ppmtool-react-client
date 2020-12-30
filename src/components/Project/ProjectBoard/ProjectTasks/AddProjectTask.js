@@ -71,7 +71,7 @@ class AddProjectTask extends React.Component {
                                            value={this.state.summary}
                                            placeholder="Project Task summary"/>
                                     {errors.summary && (
-                                        <div class={"invalid-feedback"}>{errors.summary}</div>
+                                        <div className={"invalid-feedback"}>{errors.summary}</div>
                                     )}
                                 </div>
                                 <div className="form-group">
@@ -81,7 +81,7 @@ class AddProjectTask extends React.Component {
                                               name="acceptanceCriteria"
                                               value={this.state.acceptanceCriteria}></textarea>
                                     {errors.acceptanceCriteria && (
-                                        <div class={"invalid-feedback"}>{errors.acceptanceCriteria}</div>
+                                        <div className={"invalid-feedback"}>{errors.acceptanceCriteria}</div>
                                     )}
                                 </div>
                                 <h6>Due Date</h6>
@@ -92,7 +92,7 @@ class AddProjectTask extends React.Component {
                                            name="dueDate"
                                            value={this.state.dueDate}/>
                                     {errors.dueDate && (
-                                        <div class={"invalid-feedback"}>{errors.dueDate}</div>
+                                        <div className={"invalid-feedback"}>{errors.dueDate}</div>
                                     )}
                                 </div>
                                 <div className="form-group">
@@ -106,7 +106,7 @@ class AddProjectTask extends React.Component {
                                         <option value={3}>Low</option>
                                     </select>
                                     {errors.priority && (
-                                        <div class={"invalid-feedback"}>{errors.priority}</div>
+                                        <div className={"invalid-feedback"}>{errors.priority}</div>
                                     )}
                                 </div>
 
@@ -121,7 +121,7 @@ class AddProjectTask extends React.Component {
                                         <option value="DONE">DONE</option>
                                     </select>
                                     {errors.status && (
-                                        <div class={"invalid-feedback"}>{errors.status}</div>
+                                        <div className={"invalid-feedback"}>{errors.status}</div>
                                     )}
                                 </div>
 
