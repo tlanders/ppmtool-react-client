@@ -15,6 +15,26 @@ import UpdateProjectTask from "./components/Project/ProjectBoard/ProjectTasks/Up
 import Landing from "./components/Layout/Landing";
 import Login from "./components/Layout/Login";
 import Register from "./components/Layout/Register";
+import jwt_decode from "jwt-decode";
+import setJwtToken from "./utils/setJwtToken";
+import {SET_CURRENT_USER_TASK} from "./actions/types";
+import {logout} from "./actions/securityActions";
+
+const jwtToken = localStorage.jwtToken;
+if(jwtToken) {
+    setJwtToken(jwtToken);
+    const decodedToken = jwt_decode(jwtToken);
+    store.dispatch({
+        type: SET_CURRENT_USER_TASK,
+        payload: decodedToken
+    });
+
+    const currentTime = Date.now() / 1000;
+    if(decodedToken.exp < currentTime) {
+        store.dispatch(logout());
+        window.location.href = "/";
+    }
+}
 
 class App extends Component {
     render() {

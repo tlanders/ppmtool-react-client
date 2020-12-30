@@ -38,6 +38,9 @@ class Login extends Component {
         if(nextProps.errors) {
             this.setState({errors: nextProps.errors});
         }
+        if(nextProps.security.validToken) {
+            this.props.history.push("/dashboard");
+        }
     }
 
     render() {
@@ -81,11 +84,13 @@ class Login extends Component {
 
 Login.propTypes = {
     errors: PropTypes.object.isRequired,
+    security: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-    errors: state.errors
+    errors: state.errors,
+    security: state.security
 });
 
 export default connect(mapStateToProps, {loginUser})(Login);
