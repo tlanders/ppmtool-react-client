@@ -4,7 +4,7 @@ import './App.css';
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
 import "bootstrap/dist/css/bootstrap.css";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import AddProject from "./components/Project/AddProject";
 import UpdateProject from "./components/Project/UpdateProject";
 import ProjectBoard from "./components/Project/ProjectBoard/ProjectBoard";
@@ -19,6 +19,7 @@ import jwt_decode from "jwt-decode";
 import setJwtToken from "./utils/setJwtToken";
 import {SET_CURRENT_USER_TASK} from "./actions/types";
 import {logout} from "./actions/securityActions";
+import SecureRoute from "./utils/SecureRoute";
 
 const jwtToken = localStorage.jwtToken;
 if(jwtToken) {
@@ -49,12 +50,14 @@ class App extends Component {
                         <Route exact path="/register" component={Register}/>
 
                         {/*// private routes*/}
-                        <Route exact path="/dashboard" component={Dashboard}/>
-                        <Route exact path="/addProject" component={AddProject}/>
-                        <Route path="/updateProject/:id" component={UpdateProject}/>
-                        <Route path="/projectBoard/:id" component={ProjectBoard}/>
-                        <Route path="/addProjectTask/:id" component={AddProjectTask}/>
-                        <Route path="/updateProjectTask/:identifier/:sequence" component={UpdateProjectTask}/>
+                        <Switch>
+                            <SecureRoute exact path="/dashboard" component={Dashboard}/>
+                            <SecureRoute exact path="/addProject" component={AddProject}/>
+                            <SecureRoute exact path="/updateProject/:id" component={UpdateProject}/>
+                            <SecureRoute exact path="/projectBoard/:id" component={ProjectBoard}/>
+                            <SecureRoute exact path="/addProjectTask/:id" component={AddProjectTask}/>
+                            <SecureRoute exact path="/updateProjectTask/:identifier/:sequence" component={UpdateProjectTask}/>
+                        </Switch>
                     </div>
                 </Router>
             </Provider>
