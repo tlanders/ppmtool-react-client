@@ -34,6 +34,12 @@ class Login extends Component {
         this.props.loginUser({username, password}, this.props.history);
     }
 
+    componentDidMount() {
+        if(this.props.security.validToken) {
+            this.props.history.push("/dashboard");
+        }
+    }
+
     componentWillReceiveProps(nextProps, nextContext) {
         if(nextProps.errors) {
             this.setState({errors: nextProps.errors});
